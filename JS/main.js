@@ -168,35 +168,40 @@ function startSketch() {
   start();
 
 }
+
 var toggleMove = true;
 //continually calls this function from the p5 dom library. checks if you move the cat.
 function keyPressed() {
-  var value ="";
-  // if(keyCode === 32) {
-  //   toggleMovement();
-  // }
-  if(toggleMove) {
-    switch(keyCode) {
-      case LEFT_ARROW:
-      value = "left";
-      console.log('here');
-      break;
-      case RIGHT_ARROW:
-      value = "right";
-      break;
-      case UP_ARROW:
-      value = "up";
-      break;
-      case DOWN_ARROW:
-      value = "down";
-      break;
-      default:
+  if(started) {
+    var value ="";
+    // if(keyCode === 32) {
+    //   toggleMovement();
+    // }
+    if(toggleMove) {
+      switch(keyCode) {
+        case LEFT_ARROW:
+        value = "left";
+        console.log('here');
+        break;
+        case RIGHT_ARROW:
+        value = "right";
+        break;
+        case UP_ARROW:
+        value = "up";
+        break;
+        case DOWN_ARROW:
+        value = "down";
+        break;
+        default:
+      }
     }
+    catsImgs[game.catIndex].hide();
+    cats[game.catIndex].move(value);
+    console.log('keymove');
   }
-  catsImgs[game.catIndex].hide();
-  cats[game.catIndex].move(value);
-  console.log('keymove');
+
 }
+
 
 //show the cats on the screen with the draw function
 function showCats() {
