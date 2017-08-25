@@ -1,0 +1,100 @@
+body {
+  font-family: "Russo One";
+}
+p {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  padding: 15px;
+}
+
+.game {
+  border: 4px solid black;
+  height: 700px;
+  width: 1080px;
+  margin: 0 auto;
+  /*margin-left: 95px;*/
+}
+
+.row {
+  width: 100%;
+  height: 10%;
+  margin: 0 auto;
+  border: 1px solid gray;
+}
+
+.col-md-1 {
+  border: 1px dotted black;
+  padding: 0;
+}
+
+.start-btn, .end-btn, .level-btn {
+  margin: 10px;
+  margin-left: 150px;
+  padding: 10px 20px;
+}
+#game-end-btn {
+  margin: 0 0 0 10px;
+  padding: 10px 20px;
+}
+
+.start-screen, .level-screen {
+  width: 100%;
+  height:100%;
+  vertical-align: middle;
+  margin: 0 auto;
+  padding: 30%;
+}
+
+.level-screen {
+  display:none;
+}
+
+.game-screen {
+  width: 100%;
+  height:100%;
+  display:none;
+  position:relative;
+}
+
+/*canvas {
+  width: 100%;
+  height:100%;
+
+  background-color: none;
+  position:absolute;
+}*/
+
+.middle-row, .start-row {
+  background-color: #77dd77;
+}
+.info-row {
+  border:2px solid blue;
+  padding: 15px;
+}
+.game-row {
+  background-color: lightgray;
+}
+.end-row {
+  background-color: #ADD8E6;
+}
+
+h2 {
+  text-align:center;
+  font-size: 45px;
+}
+
+.progress {
+  margin: 8px 0;
+}
+
+#movement {
+  /*font-size: 20px;
+  /*color: blue;*/*/
+}
+
+img {
+  display: none;
+}
