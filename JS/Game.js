@@ -13,7 +13,7 @@ function Game() {
   this.rowHeight = $('.game').height()/10;
   this.endSpots = [];
   this.dogSpots = [155,430,500,225,295,570,155,430,500,225,295,570,155,430,500,225,295,570];
-  this.levelSpeeds = [3,4,4.5,5,5.5,6,7,8];
+  this.levelSpeeds = [2,3,4,5,6,7,8,9];
   this.doggos = [];
   this.doggosImgs = [];
   this.currentDogs = 12;
