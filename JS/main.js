@@ -46,10 +46,10 @@ function start(){
   started = true;
 }
 
-function preload() {
-  meowSound = loadSound("unit-1-project/audio/meow.mp3");
-  bark = loadSound("unit-1-project/audio/woof.mp3");
-}
+// function preload() {
+//   meowSound = loadSound("audio/meow.mp3");
+//   bark = loadSound("audio/woof.mp3");
+// }
 
 function setup() {
   //set up the first cat + cat array
@@ -297,21 +297,21 @@ function decreaseTime() {
 function checkCollisions() {
   game.doggos.forEach(function(dog){
     if(didHit(dog)) {
-      bark.play();
+      // bark.play();
       console.log('hit dog');
       loseLife();
     }
   });
   game.endDogs.forEach(function(dog){
     if(didHit(dog)) {
-      bark.play(0,1,1,0,1);
+      // bark.play(0,1,1,0,1);
       console.log('hit end dog');
       loseLife();
     }
   });
   game.foods.forEach(function(food, i){
     if(didHit(food)) {
-      meowSound.play();
+      // meowSound.play();
       game.eatFood[i] = true;
       game.points += 1000;
       game.updatePoints();
