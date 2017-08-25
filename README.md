@@ -1,7 +1,7 @@
 # unit-1-project: Hoppy Cat
 
 ## Links
-- [Deployed App](https://github.kdc.capitalone.com/pages/MGU339/unit-1-project/)
+- [Deployed App](https://kristenkoyanagi.github.io/hoppy-cat-game/)
 - [Trello](https://trello.com/b/ATeh7MAj/unit-1-project)
 
 ## Explanation
