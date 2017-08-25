@@ -52,6 +52,10 @@ function start(){
 // }
 
 function setup() {
+  meowSound = new Audio("audio/meow.mp3");
+  bark = new Audio("audio/woof.mp3");
+  // bark.play();
+  // meowSound.play();
   //set up the first cat + cat array
   cat = new Cat(game.catX,game.catY,game.colWidth,game.rowHeight);
   cat.setBounds(game.top,game.left,game.bottom,game.right);
@@ -232,21 +236,6 @@ function addDogs(num) {
   }
 }
 
-// // creates a new dog object and places it
-// function newDog() {
-//   var spot = game.dogSpots[game.currentDogs];
-//   if(game.currentDogs%2===0) {
-//     var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,1, game.colWidth, game.rowHeight);
-//     dogMoveImg = createImg(dog.imgRight);
-//   } else {
-//     var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,-1,  game.colWidth, game.rowHeight);
-//     dogMoveImg = createImg(dog.imgLeft);
-//   }
-//   dogMoveImg.position(dog.posX, dog.posY);
-//   dogMoveImg.size(dog.width, dog.height);
-//   game.doggos.push(dog);
-//   game.doggosImgs.push(dogMoveImg);
-// }
 
 //creates a new cat at the beginning position
 function newCat() {
@@ -297,21 +286,21 @@ function decreaseTime() {
 function checkCollisions() {
   game.doggos.forEach(function(dog){
     if(didHit(dog)) {
-      // bark.play();
+      bark.play();
       console.log('hit dog');
       loseLife();
     }
   });
   game.endDogs.forEach(function(dog){
     if(didHit(dog)) {
-      // bark.play(0,1,1,0,1);
+      bark.play();
       console.log('hit end dog');
       loseLife();
     }
   });
   game.foods.forEach(function(food, i){
     if(didHit(food)) {
-      // meowSound.play();
+      meowSound.play();
       game.eatFood[i] = true;
       game.points += 1000;
       game.updatePoints();
