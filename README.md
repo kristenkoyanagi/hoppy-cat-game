@@ -1,29 +1,34 @@
 # unit-1-project: Hoppy Cat
 
+## Links
+- [Deployed App](https://github.kdc.capitalone.com/pages/MGU339/unit-1-project/)
+- [Trello](https://trello.com/b/ATeh7MAj/unit-1-project)
+
 ## Explanation
-Hoppy Cat is essentially a remake of "Frogger" in which you are a cat that has to dodge moving dogs to get to the food bowls.
+Hoppy Cat is essentially a remake of "Frogger" in which you are a cat that has to dodge moving dogs to get to the food bowls. It's a simple game with 8 levels of gameplay where you move the cat through the game screen.
 
 ## Rules of the Game
 Use the arrow keys on the board to maneuver through the dogs running past the screen. Get 4 of your cats to the four food bowls before the timer runs out and before you lose all your cat lives to beat the level. The green rows are safe from dogs.
 
 Start:
-60 seconds time limit
-5 Lives
-0 points
+- 60 seconds time limit
+- 5 Lives
+- 0 points
 
 Points:
--500 Losing a cat life
-+1000 Getting a cat to the food bowl
-+5000 Completing the level
+- -500 Losing a cat life
+- +1000 Getting a cat to the food bowl
+- +5000 Completing the level
 
 Level Up:
-+3 Lives
-60 second timer
+- +3 Lives
+- 60 second timer (90 second timer for level 7 and 8)
 
 ## Features Implemented
 - Changes cats every time you get to a food bowl or if you lose a life.
-- Dog obstacles come from both sides of the game screen.
+- Dog obstacles come from both sides of the game screen at different speeds and positions.
 - Adding more dogs when the levels increase
+- Added 8 levels of game play
 
 
 ## Technologies Used
@@ -33,12 +38,12 @@ Level Up:
 - Javascript
 - jQuery
 - p5 Dom js library
+- p5 Sound js library
 
 ## Process/Approach
 * Brainstormed game ideas
 * Created a basic wireframes (See pics in the repo)
-* Figured out basic features and created Trello board with user stories
-* Trello Board: https://trello.com/b/ATeh7MAj/unit-1-project
+* Figured out basic features and created Trello board with user stories (link above)
 * Started with basic HTML/CSS structure and added game screen bootstrap
 * Fiddled around with canvas and choosing a JS canvas library to start creating images for the game (took a long long time)
 * Uploaded images for the game objects
@@ -56,6 +61,7 @@ Level Up:
 * Made game easier because it was too hard to get to Level 8
 * Added a brief pause in movement after you respawn a cat so you don't accidentally run into dogs
 * Had to change a lot of the code because it was unresponsive to different view screen sizes. Now it is more responsive to different view widths/heights.
+* Fixed a bug that didn't clear all the dogs when I reset the game
 
 
 ## Bugs
@@ -65,7 +71,9 @@ Level Up:
 
 ## Future Features
 * High score saving on a db
+* Animate collisions
+* Fix the bugs mentioned
 
 
 ## Biggest Wins and Challenges
-* My biggest challenge was trying to make canvas work so I could get my images on the screen and move them without getting a trail of images or getting no image. I tried many different ways before settling on p5. However, p5 sometimes doesn't work in the way I want it to because it has a few functions that only run at certain times and it's hard to replicate or control them. Also, the documentation on p5 images was not very robust and I ran into many problems in my image creation (had to work around many things).
+* My biggest challenge was trying to make canvas work so I could get my images on the screen and move them without getting a trail of images or getting no image. I tried many different ways before settling on p5. However, p5 sometimes doesn't work in the way I want it to because it has a few functions that only run at certain times and it's hard to replicate or control them. Also, the documentation on p5 images was not very robust and I ran into many problems in my image creation (had to work around many things). I still ran into some bugs in using this library, but I couldn't help fixing some of them.

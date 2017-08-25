@@ -46,10 +46,11 @@ function start(){
   started = true;
 }
 
-// function preload() {
-//   meowSound = loadSound("../audio/meow.mp3");
-//   bark = loadSound("../audio/woof.mp3");
-// }
+function preload() {
+  meowSound = loadSound("unit-1-project/audio/meow.mp3");
+  bark = loadSound("unit-1-project/audio/woof.mp3");
+}
+
 function setup() {
   //set up the first cat + cat array
   cat = new Cat(game.catX,game.catY,game.colWidth,game.rowHeight);
@@ -83,7 +84,7 @@ function setup() {
   addDogs(18);
 }
 
-
+//continually calls this draw function to keep drawing the objects on screen using the p5 dom library
 function draw() {
   if(started) {
     background(255,255,255);
@@ -104,6 +105,7 @@ function draw() {
   }
 }
 
+//shuffles the end spots for the dogs and the food bowls
 function sortEndSpots() {
   game.endSpots = game.endSpots.slice(0, 10).sort(function() {
     return .5 - Math.random();
@@ -112,7 +114,7 @@ function sortEndSpots() {
 }
 
 
-
+//call this function to re-setup the game after reset or next level
 function startSketch() {
   game.catIndex = 0;
   cats = [];
@@ -132,12 +134,15 @@ function startSketch() {
   catsImgs[game.catIndex].size(cats[game.catIndex].width, cats[game.catIndex].height);
   if(game.level % 2 === 1) {
     game.currentDogs++;
+    if(game.level === 7) {
+      game.currentDogs = 18;
+    }
     console.log(game.currentDogs);
   }
 
   //change speed of moving dogs
   for(let i = 0; i < game.doggos.length; i++) {
-    game.doggos[i].speed = game.levelSpeeds[game.level]*Math.random()+1;
+    game.doggos[i].speed = game.levelSpeeds[game.level]*Math.random()+2;
   }
 
   //move dogs that aren't on level off the screen
@@ -148,7 +153,6 @@ function startSketch() {
 
   //reshuffle and replace the end dogs and food bowls.
   sortEndSpots();
-
   for(let i = 0; i < game.endSpots.length; i++) {
     var spot = game.endSpots[i];
     if(i < 4) {
@@ -160,13 +164,12 @@ function startSketch() {
       game.endDogs[i-4].posX = spot[0];
       game.endDogs[i-4].posY = spot[1];
     }
-
   }
-
   start();
 
 }
 var toggleMove = true;
+//continually calls this function from the p5 dom library. checks if you move the cat.
 function keyPressed() {
   var value ="";
   // if(keyCode === 32) {
@@ -195,7 +198,7 @@ function keyPressed() {
   console.log('keymove');
 }
 
-
+//show the cats on the screen with the draw function
 function showCats() {
   for (var i = 0; i < cats.length; i++) {
     catsImgs[i].position(cats[i].posX, cats[i].posY);
@@ -204,16 +207,16 @@ function showCats() {
   }
 }
 
-
+// Add dogs to the game object and saves them with the position and speed
 function addDogs(num) {
   if(game.dogSpots) {
     for(let i = 0; i < num; i++) {
       var spot = game.dogSpots[i];
       if(i%2===0) {
-        var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,1, game.colWidth, game.rowHeight);
+        var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+2,1, game.colWidth, game.rowHeight);
         dogMoveImg = createImg(dog.imgRight);
       } else {
-        var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,-1,  game.colWidth, game.rowHeight);
+        var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+2,-1,  game.colWidth, game.rowHeight);
         dogMoveImg = createImg(dog.imgLeft);
       }
       dogMoveImg.position(dog.posX, dog.posY);
@@ -224,21 +227,23 @@ function addDogs(num) {
   }
 }
 
-function newDog() {
-  var spot = game.dogSpots[game.currentDogs];
-  if(game.currentDogs%2===0) {
-    var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,1, game.colWidth, game.rowHeight);
-    dogMoveImg = createImg(dog.imgRight);
-  } else {
-    var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,-1,  game.colWidth, game.rowHeight);
-    dogMoveImg = createImg(dog.imgLeft);
-  }
-  dogMoveImg.position(dog.posX, dog.posY);
-  dogMoveImg.size(dog.width, dog.height);
-  game.doggos.push(dog);
-  game.doggosImgs.push(dogMoveImg);
-}
+// // creates a new dog object and places it
+// function newDog() {
+//   var spot = game.dogSpots[game.currentDogs];
+//   if(game.currentDogs%2===0) {
+//     var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,1, game.colWidth, game.rowHeight);
+//     dogMoveImg = createImg(dog.imgRight);
+//   } else {
+//     var dog = new Dog(game.left, game.right, spot,game.levelSpeeds[game.level]*Math.random()+1,-1,  game.colWidth, game.rowHeight);
+//     dogMoveImg = createImg(dog.imgLeft);
+//   }
+//   dogMoveImg.position(dog.posX, dog.posY);
+//   dogMoveImg.size(dog.width, dog.height);
+//   game.doggos.push(dog);
+//   game.doggosImgs.push(dogMoveImg);
+// }
 
+//creates a new cat at the beginning position
 function newCat() {
   game.catIndex +=1;
   var newCat = new Cat(game.catX,game.catY,game.colWidth,game.rowHeight);
@@ -250,6 +255,7 @@ function newCat() {
   catsImgs.push(newCatImg);
 }
 
+// adds a short movement pause after a new cat respawns
 function toggleMovement() {
   toggleMove = !toggleMove;
   if(toggleMove) {
@@ -259,7 +265,7 @@ function toggleMovement() {
   }
 }
 
-
+//starts the timer on the bottom when the level starts
 function decreaseTime() {
   game.interval = setInterval(function(){
     game.time = game.time-1;
@@ -286,21 +292,21 @@ function decreaseTime() {
 function checkCollisions() {
   game.doggos.forEach(function(dog){
     if(didHit(dog)) {
-      // bark.play();
+      bark.play();
       console.log('hit dog');
       loseLife();
     }
   });
   game.endDogs.forEach(function(dog){
     if(didHit(dog)) {
-      // bark.play(0,1,1,0,1);
+      bark.play(0,1,1,0,1);
       console.log('hit end dog');
       loseLife();
     }
   });
   game.foods.forEach(function(food, i){
     if(didHit(food)) {
-      // meowSound.play();
+      meowSound.play();
       game.eatFood[i] = true;
       game.points += 1000;
       game.updatePoints();
@@ -318,7 +324,6 @@ function checkCollisions() {
 //checks if an object "thing" has hit the cat
 function didHit(thing) {
   var cat = cats[game.catIndex];
-
   if (cat.posX < thing.posX + thing.width &&
     cat.posX + thing.width > thing.posX &&
     cat.posY < thing.posY + thing.height &&
@@ -330,6 +335,7 @@ function didHit(thing) {
     }
   }
 
+//when you lose the level, this function is called
   function loseGame(stop) {
     if(game.time === 0 || game.lives === 0 || stop) {
       started = false;
@@ -345,6 +351,7 @@ function didHit(thing) {
     }
   }
 
+//call this when a cat hits one of the dog objects
   function loseLife() {
     game.lives -= 1;
     game.points -= 500;
@@ -360,7 +367,7 @@ function didHit(thing) {
     setTimeout(function(){ toggleMovement(); },500);
   }
 
-
+//checks if they have won the level and updates the score/everything so they can move to the next level
   function winGame() {
     if(game.eatFood.includes(false)) {
     } else {

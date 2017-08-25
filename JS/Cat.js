@@ -1,13 +1,4 @@
-// var Cat = (function(){
-//   return {
-//     coordinates: [],
-//     lives:
-//     //lives
-//     //points
-//     //move fn (keypress)
-//     //isHit
-//   }
-// })();
+
 function Cat(posX, posY,width,height) {
   this.posX = posX-5;
   this.posY = posY;

@@ -1,10 +1,4 @@
-// var MovingObject = (function(){
-//   //row in which generated
-//   //speed of moving across screen
-//   //didHit cat
-//   //update position
-//
-// })();
+
 
 function Dog(posXbound, posYbound, posY,speed,direction,width,height) {
   this.speed = speed;
